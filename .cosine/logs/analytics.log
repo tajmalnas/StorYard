@@ -1,0 +1,5 @@
+
+INFO [2024-02-07T07:14:05.949Z]: Set User: tajjuddin.malnas21@pccoepune.org
+INFO [2024-02-07T07:14:05.950Z]: {"Telemetry":true}
+INFO [2024-02-07T07:14:15.876Z]: extension_initialized
+INFO [2024-02-07T07:14:15.877Z]: {"timeToInit":14020,"agent":"cosine-vscode","version":"1.1.2","package":"@cosine/analytics"}

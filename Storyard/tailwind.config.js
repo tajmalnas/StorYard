@@ -8,8 +8,12 @@ export default {
   theme: {
     extend: {
       colors:{
-        first:"#62fe7a"
-      }
+        first:"#62fe7a",
+        second:"#1d232a",
+      },
+      fontFamily: {
+        default: ['Rubik'],
+      },
     },
   },
   plugins: [require("daisyui")],

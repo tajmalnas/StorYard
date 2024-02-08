@@ -1,8 +1,15 @@
+import { useNavigate } from "react-router-dom";
+import '../../styles/Header.css'
+
 const SignUp = () => {
+    const navigate = useNavigate()
+    const navigateTo = (path) => {
+      navigate(path);
+    }
     return (
         <div className="min-h-screen flex md:flex-row flex-col-reverse gap-y-8">
-            <div className="md:h-screen min-h-fit flex md:w-1/2 justify-center items-center">
-                <img src="../../public/assets/undraw_mobile_content_xvgr (1).svg" alt="nature" className="w-68 md:h-96 h-full object-cover" />
+            <div className="md:h-screen min-h-fit flex md:w-1/2 justify-center items-center animate-up-down">
+                <img src="../../public/assets/_8224ac5e-a2de-41f5-a7b7-09a13e0ae2be-removebg-preview.png" alt="nature" className="w-68 md:h-[26rem] h-full object-cover" />
             </div>
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center md:justify-center px-2">
                 <div className="bg-second/90 border-first border-2 px-6 py-8 rounded shadow-md text-white w-full">
@@ -50,7 +57,7 @@ const SignUp = () => {
     
                 <div className="text-gray-600 mt-6">
                   Already have an account? 
-                  <a className="no-underline border-b border-first text-first" href="../login/">
+                  <a className="no-underline border-b border-first text-first" onClick={()=>navigateTo('/login')}>
                     Log in
                   </a>.
                 </div>

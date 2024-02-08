@@ -25,7 +25,7 @@ const Navbar = () => {
             </a>
             {/* Nav Links */}
             <ul className="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
-              <li><a className="cursor-pointer font-medium hover:text-gray-200">Home</a></li>
+              <li><a onClick={()=>navigateTo('/')} className="cursor-pointer font-medium hover:text-gray-200">Home</a></li>
               <li><a className="cursor-pointer font-medium hover:text-gray-200">Category</a></li>
               <li><a className="cursor-pointer font-medium hover:text-gray-200">Collections</a></li>
               <li><a className="cursor-pointer font-medium hover:text-gray-200">Contact Us</a></li>
@@ -40,7 +40,7 @@ const Navbar = () => {
               </a>
             </div>} */}
             <div className="hidden md:flex items-center space-x-5">
-              <button className="hover:border-first border-2 border-[#1d232a] p-1 px-3 rounded-md">Login</button>
+              <button onClick={()=>navigateTo('/login')} className="hover:border-first border-2 border-[#1d232a] p-1 px-3 rounded-md">Login</button>
               <button onClick={()=>navigateTo('/signup')} className="bg-slate-50 p-1 px-3 rounded-md hover:scale-95 text-black">SignUp</button>
             </div>
           </div>

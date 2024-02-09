@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { signInFailure, signInStart, signInSuccess } from "../../redux/user/userSlice";
+import GoogleAuth from "../../components/GoogleAuth";
 
 const Login = () => {
 
@@ -104,6 +105,8 @@ const Login = () => {
               >
                 {loading===true?<span className="loading loading-dots loading-xs"></span> : <span>Let{`'`}s Go</span>}
               </button>
+              
+              <GoogleAuth/>
     
               <div className="text-center text-sm text-gray-600 mt-4">
                 By Login, you agree to the 

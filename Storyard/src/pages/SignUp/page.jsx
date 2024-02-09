@@ -4,6 +4,7 @@ import { useState } from "react";
 import { validateForm } from "./validate";
 import axios from "axios";
 import { toast } from "react-toastify";
+import GoogleAuth from "../../components/GoogleAuth";
 
 const SignUp = () => {
   
@@ -59,33 +60,33 @@ const SignUp = () => {
           <div className="md:h-screen min-h-fit flex md:w-1/2 justify-center items-center animate-up-down">
               <img src="../../public/assets/_8224ac5e-a2de-41f5-a7b7-09a13e0ae2be-removebg-preview.png" alt="nature" className="w-68 md:h-[26rem] h-full object-cover" />
           </div>
-          <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center md:justify-center px-2">
-              <div className="bg-second/90 border-first border-2 px-6 py-8 rounded shadow-md text-white w-full">
-                <h1 className="mb-8 text-3xl text-center">Sign Up</h1>
+          <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center md:-mt-8 md:justify-center px-2">
+              <div className="bg-second/90 border-first border-2 px-6 py-4 rounded shadow-md text-white w-full">
+                <h1 className="mb-4 text-3xl text-center">Sign Up</h1>
                 <input 
                   type="text"
-                  className="block border border-gray-300 w-full p-3 rounded mb-4"
+                  className="block border border-gray-300 w-full p-2 rounded mb-4"
                   name="fullname"
                   value={username}
                   onChange={(e)=>setUsername(e.target.value)}
                   placeholder="Full Name" />
                 <input 
                   type="text"
-                  className="block border border-gray-300 w-full p-3 rounded mb-4"
+                  className="block border border-gray-300 w-full p-2 rounded mb-4"
                   name="email"
                   value={email}
                   onChange={(e)=>setEmail(e.target.value)}
                   placeholder="Email" />
                 <input 
                   type="password"
-                  className="block border border-gray-300 w-full p-3 rounded mb-4"
+                  className="block border border-gray-300 w-full p-2 rounded mb-4"
                   name="password"
                   value={password}
                   onChange={(e)=>setPassword(e.target.value)}
                   placeholder="Password" />
                 <input 
                   type="password"
-                  className="block border border-gray-300 w-full p-3 rounded mb-4"
+                  className="block border border-gray-300 w-full p-2 rounded mb-4"
                   name="confirm_password"
                   value={confirmPassword}
                   onChange={(e)=>setConfirmPassword(e.target.value)}
@@ -96,8 +97,10 @@ const SignUp = () => {
                 >
                   {loading ? <span className="loading loading-dots loading-xs"></span> : "Create Account"}
                 </button>
+
+                <GoogleAuth/>
       
-                <div className="text-center text-sm text-gray-600 mt-4">
+                <div className="text-center text-sm text-gray-600 mt-2">
                   By signing up, you agree to the 
                   <a className="no-underline border-b border-gray-600 text-gray-600" href="#">
                     Terms of Service
@@ -108,7 +111,7 @@ const SignUp = () => {
                 </div>
               </div>
   
-              <div className="text-gray-600 mt-6">
+              <div className="text-gray-600 mt-3">
                 Already have an account? 
                 <a className="no-underline border-b border-first text-first" onClick={()=>navigateTo('/login')}>
                   Log in

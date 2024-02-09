@@ -46,7 +46,7 @@ const SignUp = () => {
       errorMessage = validateForm(username, email, password, confirmPassword);
       if (errorMessage !== "valid") {
         toast.error(errorMessage,{
-          className: 'bg-second text-white'
+          className:'bg-second text-white'
         });
         setLoading(false);
         return;

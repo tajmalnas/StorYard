@@ -1,11 +1,12 @@
 const bcypt = require('bcryptjs');
 const User = require('../model/user.model');
+const { errorHandler } = require('../utils/error');
 
-const signup = async (req, res) => {
+const signup = async (req, res,next) => {
     const {username, email, password} = req.body;
     console.log(req.body);
     if (!username || !email || !password) {
-        return res.status(400).json({msg: 'Please enter all fields'});
+        next(errorHandler(400, 'All fields are required'));
     }
     try {
         const user = await User.findOne({email})
@@ -21,7 +22,7 @@ const signup = async (req, res) => {
         await newUser.save()
         res.json({msg: 'User added successfully'});
     } catch (error) {
-        res.json({msg: error.message});
+        next(error);
     }
 }
 

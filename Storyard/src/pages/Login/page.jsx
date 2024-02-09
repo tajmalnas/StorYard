@@ -2,12 +2,17 @@ import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { signInFailure, signInStart, signInSuccess } from "../../redux/user/userSlice";
 
 const Login = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [loading, setLoading] = useState(false)
+  // const [loading, setLoading] = useState(false)
+
+  const dispatch = useDispatch();
+  const {loading,error} = useSelector(state => state.user)
 
   const navigate = useNavigate();
   const navigateTo = (path) => {
@@ -16,12 +21,14 @@ const Login = () => {
 
   const postData = async () => {
   
-    setLoading(true); // Set loading to true when the request starts
+    // setLoading(true); // Set loading to true when the request starts
+    dispatch(signInStart());
     try {
       const res = await axios.post('/auth/login', {
         email,
         password
       });
+      dispatch(signInSuccess(res.data))
       toast.success(res.data.msg, {
         className: 'bg-second text-white'
       });
@@ -29,40 +36,44 @@ const Login = () => {
       localStorage.setItem('token', res.data.token);
       navigateTo('/');
     } catch (err) {
-      toast.error("Invalid credentials",{
+      dispatch(signInFailure(err.response.data))
+      toast.error(error.message,{
         className: 'bg-second text-white'
       });
       console.log(err.response);
     }
-    setLoading(false);
   }
   
 
   const submitForm = () => {
-    setLoading(true);
+    // setLoading(true);
+    dispatch(signInStart());
     if(!email || !password) {
       toast.error("All fields are required",{
         className:'bg-second text-white'
       });
-      setLoading(false);
+      // setLoading(false);
+      dispatch(signInFailure("all fields are required"));
       return;
     }
     if(email.indexOf('@') === -1 || email.indexOf('.') === -1) {
       toast.error("Invalid email",{
         className:'bg-second text-white'
       });
-      setLoading(false);
+      // setLoading(false);
+      dispatch(signInFailure("Invalid email"));
       return;
     }
     if(password.length < 8) {
       toast.error("Password must be at least 8 characters long",{
         className:'bg-second text-white'
       });
-      setLoading(false);
+      // setLoading(false);
+      dispatch(signInFailure("Password must be at least 8 characters long"));
       return;
     }
     postData()
-    setLoading(false);
+    // setLoading(false);
   }
 
   return (

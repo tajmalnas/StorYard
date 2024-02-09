@@ -5,9 +5,13 @@ import SignUp from "./pages/SignUp/page"
 import Login from "./pages/Login/page"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios"
 
 
 const App = () => {
+
+  axios.defaults.baseURL = 'http://localhost:3000/api';
+
   return (
     <div className="font-default relative">
       <div className="fixed top-0 z-10 min-h-20">

@@ -34,8 +34,8 @@ const features = [
 const Features = () => {
     return (
       <div className="flex justify-center items-center mt-8 mb-12">
-        <div className="w-[85vw] bg-gradient-to-br from-first/90 to-first/40 rounded-2xl shadow-lg p-8">
-          <h2 className="text-center text-second text-3xl font-bold mb-6">What You{`'`}ll Get</h2>
+        <div className="w-[85vw] bg-gradient-to-br from-first/90 to-first/40 rounded-2xl shadow-green-500 shadow-md p-8">
+          <h2 className="text-center text-second text-4xl font-extrabold mb-8">Key Features Of StorYard</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-y-12">
             {features.map((feature)=>{
                 return(

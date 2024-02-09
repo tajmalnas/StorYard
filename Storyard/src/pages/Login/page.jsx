@@ -1,10 +1,70 @@
+import axios from "axios";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom"
+import { toast } from "react-toastify";
 
 const Login = () => {
-    const navigate = useNavigate();
-    const navigateTo = (path) => {
-        navigate(path);
+
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+
+  const navigate = useNavigate();
+  const navigateTo = (path) => {
+      navigate(path);
+  }
+
+  const postData = async () => {
+  
+    setLoading(true); // Set loading to true when the request starts
+    try {
+      const res = await axios.post('/auth/login', {
+        email,
+        password
+      });
+      toast.success(res.data.msg, {
+        className: 'bg-second text-white'
+      });
+      console.log(res);
+      localStorage.setItem('token', res.data.token);
+      navigateTo('/');
+    } catch (err) {
+      toast.error("Invalid credentials",{
+        className: 'bg-second text-white'
+      });
+      console.log(err.response);
     }
+    setLoading(false);
+  }
+  
+
+  const submitForm = () => {
+    setLoading(true);
+    if(!email || !password) {
+      toast.error("All fields are required",{
+        className:'bg-second text-white'
+      });
+      setLoading(false);
+      return;
+    }
+    if(email.indexOf('@') === -1 || email.indexOf('.') === -1) {
+      toast.error("Invalid email",{
+        className:'bg-second text-white'
+      });
+      setLoading(false);
+      return;
+    }
+    if(password.length < 8) {
+      toast.error("Password must be at least 8 characters long",{
+        className:'bg-second text-white'
+      });
+      setLoading(false);
+      return;
+    }
+    postData()
+    setLoading(false);
+  }
+
   return (
     <div className="min-h-screen flex md:flex-row flex-col-reverse gap-y-8">
         <div className="md:h-screen min-h-fit flex md:w-1/2 justify-center items-center animate-up-down">
@@ -17,17 +77,21 @@ const Login = () => {
                 type="text"
                 className="block border border-gray-300 w-full p-3 rounded mb-4"
                 name="email"
+                value={email}
+                onChange = {(e)=>setEmail(e.target.value)}
                 placeholder="Email" />
               <input 
                 type="password"
                 className="block border border-gray-300 w-full p-3 rounded mb-4"
                 name="password"
+                value={password}
+                onChange = {(e)=>setPassword(e.target.value)}
                 placeholder="Password" />
               <button
-                type="submit"
+                onClick={submitForm}
                 className="w-full text-center py-3 rounded bg-green-500 text-white hover:bg-green-600 focus:outline-none my-1"
               >
-                Let{`'`}s Go
+                {loading===true?<span className="loading loading-dots loading-xs"></span> : <span>Let{`'`}s Go</span>}
               </button>
     
               <div className="text-center text-sm text-gray-600 mt-4">

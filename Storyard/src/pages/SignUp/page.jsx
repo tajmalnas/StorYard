@@ -21,7 +21,7 @@ const SignUp = () => {
     }
 
     const postData = async () => {
-      await axios.post('http://localhost:3000/api/auth/signup', {
+      await axios.post('/auth/signup', {
         username,
         email,
         password

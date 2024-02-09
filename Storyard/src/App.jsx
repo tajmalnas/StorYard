@@ -3,6 +3,9 @@ import Navbar from "./components/Navbar"
 import LandingPage from "./pages/LandingPage/page"
 import SignUp from "./pages/SignUp/page"
 import Login from "./pages/Login/page"
+import { ToastContainer } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css";
+
 
 const App = () => {
   return (
@@ -11,6 +14,18 @@ const App = () => {
         <Navbar/>
       </div>
       <div className="bg-[#1d232a] md:pt-20 pt-28">
+        <ToastContainer
+          position="top-right"
+          autoClose={1500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
         <Routes>
           <Route path="/" element={<LandingPage/>} />
           <Route path="/signup" element={<SignUp/>} />

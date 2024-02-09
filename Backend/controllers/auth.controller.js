@@ -14,7 +14,7 @@ const signup = async (req, res,next) => {
         if (user) {
             return res.status(400).json({msg: 'User already exists'});
         }
-        const hashedPassword = await bcypt.hashSync(password, 10);
+        const hashedPassword = bcypt.hashSync(password, 10);
         const newUser = new User({
             username,
             email,
@@ -37,7 +37,7 @@ const login = async (req, res, next) => {
         if (!user) {
             next(errorHandler(400, 'Invalid credentials'));
         }
-        const validPassword = await bcypt.compare(password, user.password);
+        const validPassword = bcypt.compareSync(password, user.password);
         if (!validPassword) {
             next(errorHandler(400, 'Invalid passord'));
         }

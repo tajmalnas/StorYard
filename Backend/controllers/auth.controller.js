@@ -7,11 +7,11 @@ const nodemailer = require('nodemailer');
 const sendEmail = (username,email, otp,) => {
 
     let transporter = nodemailer.createTransport({
-      host: "smtp-relay.brevo.com",
+      host: process.env.SMTP_HOST,
       port: 587, 
       auth: {
-        user: "tajjuddin.malnas21@pccoepune.org", 
-        pass: "MDFspfnv9KUxIGjR",
+        user: process.env.SMTP_USER, 
+        pass: process.env.SMTP_PASSWORD,
       },
     });
     

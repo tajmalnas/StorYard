@@ -50,7 +50,7 @@ const Navbar = () => {
                   <span>{user.currentUser.user.username.slice(0,7)}</span>
                 </div>
                 <ul tabIndex={0} className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                  <li><button>Profile</button></li>
+                  <li><button onClick={()=>navigateTo('/profile')}>Profile</button></li>
                   <li><button>DashBoard</button></li>
                   <li><button>logout</button></li>
                 </ul>

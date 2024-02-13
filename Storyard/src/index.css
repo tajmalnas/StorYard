@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.shadow-glow-first{
+    box-shadow: 0 0 40px #62fe7a; /* Adjust the color and intensity as needed */
+}
+
+
 ::-webkit-scrollbar {
     width: 4px; 
 }

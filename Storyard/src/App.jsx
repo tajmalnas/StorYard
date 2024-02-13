@@ -6,6 +6,7 @@ import Login from "./pages/Login/page"
 import { ToastContainer } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios"
+import ProfilePage from "./pages/profilePage/page"
 
 
 const App = () => {
@@ -31,9 +32,13 @@ const App = () => {
           theme="dark"
         />
         <Routes>
+          {/* User Authentication Part */}
           <Route path="/" element={<LandingPage/>} />
           <Route path="/signup" element={<SignUp/>} />
           <Route path="/login" element={<Login/>} />
+
+          {/* User Profile Part */}
+          <Route path="/profile" element={<ProfilePage/>} />
         </Routes>
       </div>
     </div>
